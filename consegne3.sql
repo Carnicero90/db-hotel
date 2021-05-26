@@ -21,7 +21,15 @@ ON ospite_id = ospiti.id
 /*      
   3. Stampare Nome, Cognome, Prezzo e Pagante per tutte le prenotazioni fatte a Maggio 2018
 */
-
+/* TODO: riordinala! */
+SELECT price, paganti.name AS `nome_pagante`, paganti.lastname AS `cognome_pagante`, ospiti.name, ospiti.lastname, prenotazioni.created_at
+FROM `prenotazioni`
+INNER JOIN `pagamenti` ON prenotazioni.id = `prenotazione_id`
+INNER JOIN `paganti` ON paganti.id = `pagante_id`
+INNER JOIN prenotazioni_has_ospiti
+ON prenotazioni_has_ospiti.prenotazione_id = prenotazioni.id
+INNER JOIN ospiti ON ospiti.id = prenotazioni_has_ospiti.ospite_id
+WHERE YEAR(prenotazioni.created_at) = 2018 AND MONTH(prenotazioni.created_at) = 5;
 /*      
   4. Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
 */
