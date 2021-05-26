@@ -6,7 +6,7 @@ WHERE `document_type` = 'CI';
 /* 2. Seleziona tutti gli ospiti che sono nati dopo il 1988 */
 SELECT *
 FROM `ospiti`
-WHERE `date_of_birth` > '1987-12-31';
+WHERE YEAR(`date_of_birth`) > '1987';
 
 /* 3. Seleziona tutti gli ospiti che hanno più di 20 anni (al momento dell'esecuzione della query) */
 SELECT *
